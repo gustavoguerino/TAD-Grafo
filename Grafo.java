@@ -167,4 +167,35 @@ public class Grafo {
         }
         return grau;
     }
+    //====================================================================================
+    //              CAMINHO EULERIANO
+    //              Retorna TRUE se possuir um caminho euleriano
+    //------------------------------------------------------------------------------------
+    public boolean caminhoEuleriano(){
+        Iterator I = vertices.iterator();
+        int indicesImpar = 0;
+        while (I.hasNext()) {
+            Vertice v = (Vertice) (I.next());
+            if(grau(v.getChave()) % 2 != 0){
+                indicesImpar++;
+            }
+        }
+        if(indicesImpar > 0 && indicesImpar != 2) return false;
+        else return true;
+    }
+    //====================================================================================
+    //              CAMINHO EULERIANO
+    //              Retorna TRUE se possuir um caminho euleriano
+    //------------------------------------------------------------------------------------
+    public boolean circuitoEuleriano(){
+        Iterator I = vertices.iterator();
+        while (I.hasNext()) {
+            Vertice v = (Vertice) (I.next());
+            if(grau(v.getChave()) % 2 != 0){
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
